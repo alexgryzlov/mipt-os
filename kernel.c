@@ -40,6 +40,15 @@ size_t strlen(const char* str) {
 	return len;
 }
 
+void memcpy(void *dest, void *src, size_t n)  {
+    char *raw_src = (char *)src;
+    char *raw_dest = (char *)dest;
+
+    for (size_t i = 0; i < n; ++i)
+        raw_dest[i] = raw_src[i];
+}
+
+
 static const size_t VGA_WIDTH = 80;
 static const size_t VGA_HEIGHT = 25;
 
@@ -60,6 +69,14 @@ void terminal_initialize(void) {
 	}
 }
 
+void terminal_shift_up() {
+    uint8_t color = vga_entry_color(VGA_COLOR_LIGHT_GREY, VGA_COLOR_DARK_GREY);
+    for (size_t row = 0; row < VGA_HEIGHT - 1; ++row)
+        memcpy(terminal_buffer + row * VGA_WIDTH, terminal_buffer + (row + 1) * VGA_WIDTH, VGA_WIDTH);
+    for (size_t x = 0; x < VGA_WIDTH; ++x)
+        terminal_buffer[(VGA_HEIGHT - 1) * VGA_WIDTH + x] = vga_entry(' ', color);
+}
+
 void terminal_putentryat(char c, uint8_t color, size_t x, size_t y) {
 	const size_t index = y * VGA_WIDTH + x;
 	terminal_buffer[index] = vga_entry(c, color);
@@ -71,7 +88,8 @@ void terminal_putchar_color(char c, uint8_t color) {
         terminal_row++;
         terminal_column = 0;
         if (terminal_row == VGA_HEIGHT) {
-            terminal_row = 0;
+            terminal_row = VGA_HEIGHT - 1;
+            terminal_shift_up();
         }
         break;
 
@@ -129,14 +147,11 @@ void terminal_writestring_color(const char* data, uint8_t color) {
 }
 
 
-__attribute__ ((interrupt)) void isr0(struct iframe* frame) {
-    terminal_writestring_color("Hello world!\n", vga_entry_color(VGA_COLOR_GREEN, VGA_COLOR_DARK_GREY));
-    (void)frame;
-}
-
+//TODO
 void move_terminal(int direction) {
 
 }
+
 void printf(char *format, ...) {
     size_t n = strlen(format);
 
@@ -144,30 +159,38 @@ void printf(char *format, ...) {
     va_start(args, format);
 
     for (size_t i = 0; i < n; ++i) {
-        union {
-            int   first;
-            char* second;
-        } arg;
+
+        //TODO: %% - escape character support
+        //TODO: add %c, %b, %h (char, binary, hex)
         if (format[i] == '%') {
             ++i;
             switch (format[i]) {
-                case 's':
-                    arg.second = va_arg(args, char*);
-                    terminal_writestring(arg.second);
+                case 's': {
+                    char* ptr = va_arg(args, char*);
+                    terminal_writestring(ptr);
                     break;
-                case 'd':
-                    arg.first = va_arg(args, int);
-                    terminal_writenumber(arg.first);
+                }
+                case 'd': {
+                    int number = va_arg(args, int);
+                    terminal_writenumber(number);
                     break;
+                }
             }
-        } else {
-            terminal_putchar_color(format[i], VGA_COLOR_BLUE);
+        }
+        else {
+            terminal_putchar_color(format[i], vga_entry_color(VGA_COLOR_BLUE, VGA_COLOR_LIGHT_GREY));
         }
     }
 
     va_end(args);
 }
 
+__attribute__ ((interrupt)) void isr0(struct iframe* frame) {
+    terminal_writestring_color("Hello world!\n", vga_entry_color(VGA_COLOR_GREEN, VGA_COLOR_DARK_GREY));
+    (void)frame;
+}
+
+//TODO: make interrupt work, add circular buffer for terminal history
 __attribute__ ((interrupt)) void isr9(struct iframe* frame) {
     asm volatile("cli\n\t");
     const unsigned char PIC_port = 0x20;
@@ -190,14 +213,13 @@ __attribute__ ((interrupt)) void isr9(struct iframe* frame) {
 }
 
 
-
-
-
-
 void kernel_main(void) {
     init_idt();
-
 	terminal_initialize();
     asm volatile ("sti");
-    asm volatile ("int $0x80");
+//    asm volatile ("int $0x80");
+    for (int i = 0; i < VGA_HEIGHT; ++i) {
+        printf("%d\n", i);
+    }
+    printf("im on the last row!");
 }

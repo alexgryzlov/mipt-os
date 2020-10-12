@@ -47,6 +47,7 @@ void init_idt() {
         : "r"(&IDTPTR)
         :
     );
+    // Enable IRQ1 (keyboard interrupts)
     unsigned char PIC_mask = 0xFD;
     asm volatile("outb %0, $0x21\n"
                  :
