@@ -19,8 +19,7 @@ struct idt_ptr {
 struct idt_entry IDT[256];
 struct idt_ptr IDTPTR;
 
-static void idt_register(uint8_t pos, uint32_t base, uint16_t sel, uint8_t flags)
-{
+static void idt_register(uint8_t pos, uint32_t base, uint16_t sel, uint8_t flags) {
     IDT[pos].base_lo = base & 0xFFFF;
     IDT[pos].base_hi = (base >> 16) & 0xFFFF;
 
