@@ -10,6 +10,8 @@
 #include "panic.h"
 #include "spinlock.h"
 #include "keyboard.h"
+#include "multiboot.h"
+#include "mmap.h"
 
 
 __attribute__ ((interrupt)) void syscall_entry(struct iframe* frame) {
@@ -48,8 +50,9 @@ __attribute__ ((interrupt)) void keyboard_isr(struct iframe* frame) {
 
 extern void jump_userspace();
 
-void kernel_main(void) {
-    uint8_t DEFAULT_COLOR = vga_entry_color(VGA_COLOR_LIGHT_GREY, VGA_COLOR_BLACK);
+
+
+void kernel_main(multiboot_info_t* mbd, unsigned int magic) {
     init_gdt();
     init_idt();
 
@@ -62,8 +65,7 @@ void kernel_main(void) {
     printf("RSDT checksum successfully validated!\n", DEFAULT_COLOR);
 
     apic_init(rsdt);
-    char * data ="12312";
-
+    show_memory(mbd);
     asm volatile ("sti");
     // jump_userspace();
 }

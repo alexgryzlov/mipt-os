@@ -33,6 +33,7 @@ static inline uint8_t vga_entry_color(enum vga_color fg, enum vga_color bg) {
 
 static uint8_t SUCCESS = VGA_COLOR_GREEN | VGA_COLOR_BLACK << 4;
 static uint8_t FAILURE = VGA_COLOR_RED | VGA_COLOR_BLACK << 4;
+static uint8_t DEFAULT_COLOR = VGA_COLOR_LIGHT_GREY | VGA_COLOR_BLACK << 4;
 
 static inline uint16_t vga_entry(unsigned char uc, uint8_t color) {
 	return (uint16_t) uc | (uint16_t) color << 8;

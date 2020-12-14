@@ -22,6 +22,10 @@ stack_top:
 _start:
 	mov $stack_top, %esp
 
+    # grub passes multiboot info
+    push %eax
+    push %ebx
+
 	call kernel_main
 
 1:	hlt

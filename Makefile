@@ -14,7 +14,8 @@ build:
 	$(CC) -c keyboard.c -o keyboard.o
 	$(CC) -c apic.c   -o apic.o
 	$(CC) -c vga.c    -o vga.o
-	$(LD) -T linker.ld -o kernel.bin -ffreestanding -O2 -nostdlib acpi.o keyboard.o gdt_asm.o gdt.o boot.o idt.o kernel.o vga.o apic.o -lgcc
+	$(CC) -c mmap.c   -o mmap.o
+	$(LD) -T linker.ld -o kernel.bin -ffreestanding -O2 -nostdlib acpi.o keyboard.o gdt_asm.o gdt.o boot.o idt.o kernel.o vga.o apic.o mmap.o -lgcc
 
 clean:
 	rm -f *.o

@@ -36,6 +36,15 @@ void terminal_putchar_color(char c, uint8_t color) {
                 terminal_shift_up();
             }
             break;
+        case '\t':
+            for (int i = 0; i < 4; ++i) {
+                terminal_putentryat(' ', color, terminal_column, terminal_row);
+                terminal_column++;
+                if (terminal_column == VGA_WIDTH) {
+                    break;
+                }
+            }
+            break;
 
         default:
             terminal_putentryat(c, color, terminal_column, terminal_row);
@@ -65,7 +74,8 @@ void terminal_writestring(const char* data) {
     terminal_write(data, strlen(data), vga_entry_color(VGA_COLOR_LIGHT_GREY, VGA_COLOR_BLACK));
 }
 
-void terminal_writenumber(int number, uint8_t color) {
+void terminal_writenumber(int number, uint8_t color, uint8_t base) {
+    char digits[16] = "0123456789ABCDEF";
     char buffer[32] = {};
     size_t pos = 0;
     char is_negative = false;
@@ -78,14 +88,14 @@ void terminal_writenumber(int number, uint8_t color) {
         number = -number;
     }
 
-    for ( ; number > 0; ++pos, number /= 10) {
-        buffer[pos] = number % 10;
+    for ( ; number > 0; ++pos, number /= base) {
+        buffer[pos] = digits[number % base];
     }
     if (is_negative) {
         terminal_putchar_color('-', color);
     }
     for (int i = pos - 1; i >= 0; --i) {
-        terminal_putchar_color(buffer[i] + '0', color);
+        terminal_putchar_color(buffer[i], color);
     }
 }
 
@@ -109,7 +119,19 @@ void printf(char *format, uint8_t color, ...) {
                 }
                 case 'd': {
                     int number = va_arg(args, int);
-                    terminal_writenumber(number, color);
+                    terminal_writenumber(number, color, 10);
+                    break;
+                }
+                case 'b': {
+                    int number = va_arg(args, int);
+                    terminal_writestring_color("0b", color);
+                    terminal_writenumber(number, color, 2);
+                    break;
+                }
+                case 'x': {
+                    int number = va_arg(args, int);
+                    terminal_writestring_color("0x", color);
+                    terminal_writenumber(number, color, 16);
                     break;
                 }
                 case 'c': {
