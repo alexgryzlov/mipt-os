@@ -5,6 +5,7 @@
 #include "paging.h"
 #include "panic.h"
 #include "gdt.h"
+#include "printk.h"
 #include "bug.h"
 
 #define MAX_TASKS          256
@@ -19,11 +20,22 @@ static void task_init() {
 extern void userspace_fn();
 extern void __jump_userspace();
 
+
+
+void copy_kernel_high(uint32_t* pgdir) {
+    for (uint32_t i = 0; i < 1024; ++i) {
+        pgdir[i] = kernel_pgdir[i];
+    }
+}
+
 static int task_setup(int pid) {
     struct task* task = &tasks[pid];
     task->pid = pid;
     task->state = TASK_RUNNING;
     task->kstack = kalloc_page();
+    task->pgdir = kalloc_page();
+    task->mem_end = 0;
+    copy_kernel_high(task->pgdir);
     if (!task->kstack) {
         return -ENOMEM;
     }
@@ -80,6 +92,7 @@ static void switch_to(struct task* task) {
     TSS.iopb = 0xffff;
     reload_tss();
     current = task;
+    load_cr3(virt2phys(task->pgdir));
     __switch_to(&scheduler_context, &task->context);
 }
 
@@ -132,8 +145,8 @@ void scheduler_tick(struct regs* regs) {
 
 void reschedule() {
     BUG_ON_NULL(current);
-
     struct task* old = current;
     current = NULL;
+    load_cr3(virt2phys(kernel_pgdir));
     __switch_to(&old->context, &scheduler_context);
 }

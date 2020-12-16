@@ -78,6 +78,6 @@ void kernel_main(multiboot_info_t* mbd, unsigned int magic) {
     kalloc_test();
 
     asm volatile ("sti");
-    while (1) {}
+//    while (1) {}
     scheduler_start();
 }

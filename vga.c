@@ -75,7 +75,7 @@ void terminal_writestring_color(const char* data, uint8_t color) {
 }
 
 void terminal_shift_up() {
-    uint8_t color = vga_entry_color(VGA_COLOR_LIGHT_GREY, VGA_COLOR_DARK_GREY);
+    uint8_t color = vga_entry_color(VGA_COLOR_BLACK, VGA_COLOR_BLACK);
     for (size_t row = 0; row < VGA_HEIGHT - 1; ++row)
         memcpy(terminal_buffer + row * VGA_WIDTH, terminal_buffer + (row + 1) * VGA_WIDTH, VGA_WIDTH * sizeof(terminal_buffer[0]));
     for (size_t x = 0; x < VGA_WIDTH; ++x)

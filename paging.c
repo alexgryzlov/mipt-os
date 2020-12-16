@@ -158,15 +158,14 @@ void kernel_paging_4mb() {
         addr = (addr + BIG_PAGE - 1) & (~(BIG_PAGE - 1));
         end = end & (~(BIG_PAGE - 1));
 
-        unsigned int offset = 1 << 22;
         while (addr < end) {
-            kernel_pgdir[PGDIR_IDX(KERNEL_HIGH + offset)] =
+            kernel_pgdir[PGDIR_IDX(KERNEL_HIGH + addr)] =
                     ((uint32_t) addr) | PT_PRESENT | PT_WRITEABLE | PT_PAGE_SIZE;
-            offset += BIG_PAGE;
             addr += BIG_PAGE;
             pages_cnt++;
         }
     }
+    printk("pages count = %d\n", pages_cnt);
     load_cr3(virt2phys(kernel_pgdir));
 }
 

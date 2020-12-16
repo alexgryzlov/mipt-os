@@ -5,6 +5,8 @@
 #include "timer.h"
 #include "sched.h"
 #include "bug.h"
+#include "paging.h"
+#include "printk.h"
 
 uint32_t syscall_wait(struct regs* regs) {
     int ticks = regs->ebx;
@@ -19,12 +21,22 @@ uint32_t syscall_wait(struct regs* regs) {
 }
 
 uint32_t syscall_print(struct regs* regs) {
-    terminal_writestring(".");
+    printk("syscall_print\n");
+}
+
+uint32_t syscall_brk(struct regs* regs) {
+    uint32_t size = ROUNDUP(regs->ebx);
+    void* addr = kalloc(size / PAGE_SIZE, 0);
+    addr = virt2phys(addr);
+    uint32_t ind = (uint32_t)(current->mem_end) & ~((1 << 22) - 1);
+    current->pgdir[ind] = (uint32_t)(addr) & ~((1 << 22) - 1);
+    current->mem_end += size;
 }
 
 syscall_fn syscall_table[] = {
     [0] = syscall_wait,
     [1] = syscall_print,
+    [2] = syscall_brk,
 };
 
 

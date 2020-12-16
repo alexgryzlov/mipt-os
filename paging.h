@@ -27,11 +27,16 @@ static inline void* virt2phys(void* addr) {
 static inline void* phys2virt(void* addr) {
     return (void*)((uint32_t)addr + KERNEL_HIGH);
 }
+extern uint32_t* kernel_pgdir;
+extern uint32_t pages_cnt;
 
+void load_cr3(uint32_t* pgdir);
 void init_kalloc_early();
 void init_kalloc();
 void* kalloc_page();
 void* kalloc(size_t size, int flags);
+uint32_t* get_kernel_pgdir();
+uint32_t get_kernel_high_size();
 void kfree(void*, size_t size);
 void kfree_page(void* p);
 void init_kernel_paging();

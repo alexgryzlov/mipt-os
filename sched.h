@@ -3,6 +3,7 @@
 #include <stdint.h>
 #include <stddef.h>
 
+
 typedef enum state {
     TASK_NOT_ALLOCATED = 0,
     TASK_RUNNING       = 1,
@@ -25,6 +26,8 @@ struct task {
     void* kstack;
     int ticks_remaining;
     int exitcode;
+    uint32_t* pgdir;
+    uint32_t mem_end;
 };
 
 extern struct task* current;
