@@ -41,5 +41,4 @@ void kfree(void*, size_t size);
 void kfree_page(void* p);
 void init_kernel_paging();
 void kernel_paging_4mb();
-void finish_kernel_paging();
 void identity_map(void* addr, size_t sz);
