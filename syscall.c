@@ -27,8 +27,8 @@ uint32_t syscall_print(struct regs* regs) {
 uint32_t syscall_brk(struct regs* regs) {
     uint32_t size = ROUNDUP(regs->ebx);
     void* addr = kalloc(size / PAGE_SIZE, 0);
-    addr = virt2phys(addr);
     MAKE_PANIC_IF_NULL(addr);
+    addr = virt2phys(addr);
     if (PGDIR_IDX(ind) >= PGDIR_IDX(KERNEL_HIGH)) {
         panic("crossed KERNEL_HIGH");
     }
