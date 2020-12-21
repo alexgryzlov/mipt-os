@@ -29,10 +29,10 @@ uint32_t syscall_brk(struct regs* regs) {
     void* addr = kalloc(size / PAGE_SIZE, 0);
     MAKE_PANIC_IF_NULL(addr);
     addr = virt2phys(addr);
-    if (PGDIR_IDX(ind) >= PGDIR_IDX(KERNEL_HIGH)) {
+    if (PGDIR_IDX(current->mem_end) >= PGDIR_IDX(KERNEL_HIGH)) {
         panic("crossed KERNEL_HIGH");
     }
-    current->pgdir[PGDIR_IDX(ind)] = (uint32_t)(addr) & ~((1 << 22) - 1);
+    current->pgdir[PGDIR_IDX(current->mem_end)] = (uint32_t)addr;
     current->mem_end += size;
 }
 
