@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="CMakeRunConfigurationManager" shouldGenerate="true" shouldDeleteObsolete="true">
+    <generated />
+  </component>
+  <component name="CMakeSettings">
+    <configurations>
+      <configuration PROFILE_NAME="Debug" CONFIG_NAME="Debug" />
+    </configurations>
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="4a8ba46e-f049-4e2f-b136-57a282862d74" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/kernel.c" beforeDir="false" afterPath="$PROJECT_DIR$/kernel.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/kernel.iso" beforeDir="false" afterPath="$PROJECT_DIR$/kernel.iso" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/paging.c" beforeDir="false" afterPath="$PROJECT_DIR$/paging.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/paging.h" beforeDir="false" afterPath="$PROJECT_DIR$/paging.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sched.c" beforeDir="false" afterPath="$PROJECT_DIR$/sched.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sched.h" beforeDir="false" afterPath="$PROJECT_DIR$/sched.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/syscall.S" beforeDir="false" afterPath="$PROJECT_DIR$/syscall.S" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/syscall.c" beforeDir="false" afterPath="$PROJECT_DIR$/syscall.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vga.c" beforeDir="false" afterPath="$PROJECT_DIR$/vga.c" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ClangdSettings">
+    <option name="formatViaClangd" value="false" />
+  </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MakefilesProjectLoadingState">
+    <option name="doClean" value="false" />
+  </component>
+  <component name="ProjectId" id="1imzkyg2to1TkcL2i7crovaA2FR" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="cf.first.check.clang-format" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="MakefileSettings" />
+  </component>
+  <component name="RunManager" selected="Makefile.Makefile">
+    <configuration default="true" type="GradleAppRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" PASS_PARENT_ENVS_2="true">
+      <method v="2">
+        <option name="com.jetbrains.cidr.cpp.gradle.execution.GradleNativeBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Makefile" type="MAKEFILE_TARGET_RUN_CONFIGURATION" factoryName="Makefile" temporary="true">
+      <makefile filename="$PROJECT_DIR$/Makefile" target="" workingDirectory="" arguments="">
+        <envs />
+      </makefile>
+      <method v="2" />
+    </configuration>
+    <configuration name="all" type="MAKEFILE_TARGET_RUN_CONFIGURATION" factoryName="Makefile" temporary="true">
+      <makefile filename="$PROJECT_DIR$/Makefile" target="all" workingDirectory="" arguments="">
+        <envs />
+      </makefile>
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Makefile.Makefile" />
+        <item itemvalue="Makefile.all" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="4a8ba46e-f049-4e2f-b136-57a282862d74" name="Default Changelist" comment="" />
+      <created>1602527702273</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1602527702273</updated>
+      <workItem from="1602527703637" duration="2378000" />
+      <workItem from="1602757607019" duration="27000" />
+      <workItem from="1604245859812" duration="163000" />
+      <workItem from="1604246340191" duration="14172000" />
+      <workItem from="1607459226176" duration="5127000" />
+      <workItem from="1607501422073" duration="6975000" />
+      <workItem from="1607509053979" duration="2662000" />
+      <workItem from="1607511800339" duration="9953000" />
+      <workItem from="1607959127368" duration="10661000" />
+      <workItem from="1608040737701" duration="1953000" />
+      <workItem from="1608043187980" duration="20159000" />
+      <workItem from="1608106748810" duration="33901000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="411" y="102" width="1277" height="698" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1607523812176">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="411" y="102" width="1277" height="698" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1607523812176" />
+    <state x="526" y="108" width="842" height="415" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1608110490306">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="526" y="108" width="860" height="415" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1080/0.0.1920.1080@0.0.1920.1080" timestamp="1608110490306" />
+    <state x="523" y="42" width="842" height="415" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1080@0.0.1920.1080" timestamp="1607526708632" />
+    <state x="625" y="165" width="657" height="609" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1608051430779">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="625" y="165" width="657" height="609" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1080/0.0.1920.1080@0.0.1920.1080" timestamp="1608051430779" />
+    <state x="625" y="165" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1607508727657" />
+    <state x="672" y="20" key="FileChooserDialogImpl" timestamp="1607523737790">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="679" y="174" key="FileChooserDialogImpl/0.0.1920.1080/0.0.1920.1080@0.0.1920.1080" timestamp="1604246021705" />
+    <state x="672" y="20" key="FileChooserDialogImpl/0.0.1920.1080@0.0.1920.1080" timestamp="1607523737790" />
+    <state width="1868" height="369" key="GridCell.Tab.0.bottom" timestamp="1608108131580">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1868" height="369" key="GridCell.Tab.0.bottom/0.0.1920.1080/0.0.1920.1080@0.0.1920.1080" timestamp="1608108131580" />
+    <state width="1868" height="369" key="GridCell.Tab.0.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1607531545836" />
+    <state width="1868" height="369" key="GridCell.Tab.0.center" timestamp="1608108131580">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1868" height="369" key="GridCell.Tab.0.center/0.0.1920.1080/0.0.1920.1080@0.0.1920.1080" timestamp="1608108131580" />
+    <state width="1868" height="369" key="GridCell.Tab.0.center/0.0.1920.1080@0.0.1920.1080" timestamp="1607531545834" />
+    <state width="1868" height="369" key="GridCell.Tab.0.left" timestamp="1608108131580">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1868" height="369" key="GridCell.Tab.0.left/0.0.1920.1080/0.0.1920.1080@0.0.1920.1080" timestamp="1608108131580" />
+    <state width="1868" height="369" key="GridCell.Tab.0.left/0.0.1920.1080@0.0.1920.1080" timestamp="1607531545834" />
+    <state width="1868" height="369" key="GridCell.Tab.0.right" timestamp="1608108131580">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1868" height="369" key="GridCell.Tab.0.right/0.0.1920.1080/0.0.1920.1080@0.0.1920.1080" timestamp="1608108131580" />
+    <state width="1868" height="369" key="GridCell.Tab.0.right/0.0.1920.1080@0.0.1920.1080" timestamp="1607531545835" />
+    <state x="422" y="19" key="SettingsEditor" timestamp="1607523713291">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="422" y="19" key="SettingsEditor/0.0.1920.1080@0.0.1920.1080" timestamp="1607523713291" />
+    <state x="210" y="337" width="1494" height="239" key="makefile.clean.confirm.dialog" timestamp="1607509061473">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="212" y="381" width="1494" height="239" key="makefile.clean.confirm.dialog/0.0.1920.1080/0.0.1920.1080@0.0.1920.1080" timestamp="1602527711453" />
+    <state x="210" y="337" width="1494" height="239" key="makefile.clean.confirm.dialog/0.0.1920.1080@0.0.1920.1080" timestamp="1607509061473" />
+    <state x="539" y="234" key="run.anything.popup" timestamp="1608111811954">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="539" y="234" key="run.anything.popup/0.0.1920.1080/0.0.1920.1080@0.0.1920.1080" timestamp="1608111811954" />
+    <state x="539" y="45" width="840" height="1034" key="search.everywhere.popup" timestamp="1608146657985">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="539" y="45" width="840" height="1034" key="search.everywhere.popup/0.0.1920.1080/0.0.1920.1080@0.0.1920.1080" timestamp="1608146657985" />
+    <state x="539" y="45" width="840" height="1034" key="search.everywhere.popup/0.0.1920.1080@0.0.1920.1080" timestamp="1607524577817" />
+  </component>
+</project>

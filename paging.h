@@ -1,0 +1,44 @@
+#pragma once
+
+#include <stddef.h>
+#include <stdint.h>
+
+#include "defs.h"
+
+#define PT_PRESENT      (1 << 0)
+#define PT_WRITEABLE    (1 << 1)
+#define PT_USER         (1 << 2)
+#define PT_PAGE_SIZE    (1 << 7)
+
+#define PGDIR_IDX(addr) ((((uint32_t)addr) >> 22) & 1023)
+#define PT_IDX(addr) ((((uint32_t)addr) >> 12) & 1023)
+
+#define ROUNDUP(addr) ((void*)(((uint32_t)(addr) + PAGE_SIZE - 1) & ~(PAGE_SIZE - 1)))
+#define ROUNDDOWN(addr) ((void*)((uint32_t)(addr) & ~(PAGE_SIZE - 1)))
+
+extern char KERNEL_END[];
+extern char KERNEL_START[];
+extern char USERSPACE_START[];
+
+static inline void* virt2phys(void* addr) {
+    return (void*)((uint32_t)addr - KERNEL_HIGH);
+}
+
+static inline void* phys2virt(void* addr) {
+    return (void*)((uint32_t)addr + KERNEL_HIGH);
+}
+extern uint32_t* kernel_pgdir;
+extern uint32_t pages_cnt;
+
+void load_cr3(uint32_t* pgdir);
+void init_kalloc_early();
+void init_kalloc();
+void* kalloc_page();
+void* kalloc(size_t size, int flags);
+uint32_t* get_kernel_pgdir();
+uint32_t get_kernel_high_size();
+void kfree(void*, size_t size);
+void kfree_page(void* p);
+void init_kernel_paging();
+void kernel_paging_4mb();
+void identity_map(void* addr, size_t sz);
